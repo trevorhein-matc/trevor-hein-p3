@@ -16,7 +16,7 @@ const BarChart = props => {
     let yScale;
     let axisCheck = axisCache.current;
 
-    // console.log(data);
+    console.log(data);
 
     groupWithData.exit().remove();
 
@@ -57,8 +57,12 @@ const BarChart = props => {
 
     //On click handler for bars to display elements
     const moreInfo = function(d) {
+      let gameWeek = "Week: " + d.week;
       let points = "Points: " + d.points;
+      let matchResults = "Match Results: " + d.opponent;
       d3.select("#points").text(points);
+      d3.select("#week").text(gameWeek);
+      d3.select("#matchResults").text(matchResults);
 
       bars.attr("stroke-width", 0);
 
@@ -68,6 +72,8 @@ const BarChart = props => {
         .attr("stroke-width", 3);
     };
 
+
+    //bar elements
     const bars = groupWithUpdate
       .append("rect")
       .merge(groupWithData.select("bars.bar"));
@@ -190,17 +196,17 @@ const BarChart = props => {
     <div>
       <Flex>
         <Box
-          width={1/6}
+          width={1/3}
         >
           <p id="week">Week Stats</p>
         </Box>
         <Box
-          width={1/6}
+          width={1/3}
         >
           <p id="points">Points</p>
         </Box>
         <Box
-          width={1/6}
+          width={1/3}
         >
           <p id="matchResults">Match Results</p>
         </Box>
