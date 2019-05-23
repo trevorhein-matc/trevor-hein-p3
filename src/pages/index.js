@@ -30,7 +30,6 @@ function IndexPage() {
         <ChartController data={data} />
         {/* <WiMapController mapData={mapData} foodAssistData={foodAssistData} /> */}
       </div>
-      
     );
   } else {
     return <div />;
